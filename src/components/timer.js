@@ -8,12 +8,13 @@ const Timer = ({time}) => {
   const seconds = makeMeTwoDigits(tempTime.seconds());
   const minutes = makeMeTwoDigits(tempTime.minutes());
   const hours = makeMeTwoDigits(tempTime.hours());
-  const days = makeMeTwoDigits(tempTime.days());
+  const daysVal = tempTime.days();
+  const days = daysVal > 0 ? `${daysVal}: дни - ` : null;
   return (
     <>
       <Typography variant="body2" component="span" gutterBottom>затраченное время</Typography>
       <Typography variant="caption" component="span" display="block" gutterBottom>
-        дни: {days} часы: {hours} минуты: {minutes} секунды: {seconds}
+        {days} {hours}: часы  - {minutes}: минуты - {seconds}: секунды
       </Typography>
     </>
   );

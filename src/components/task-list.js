@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React  from 'react';
 import {connect} from 'react-redux';
 import TaskItem from "./task-item";
 import {Grid, List} from "@material-ui/core";
@@ -6,6 +6,7 @@ import {useStyles} from "./styles";
 
 const TaskList = ({tasks}) => {
   const classes = useStyles();
+
   return (
     <div className={classes.container} style={{height: 'calc(100vh - 120px)', overflowY: 'auto'}}>
       <Grid container

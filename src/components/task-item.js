@@ -11,21 +11,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 class TaskItem extends Component {
   state = {
-    name: '',
-    time: 0,
-    start: 0,
-    isOn: false,
+    name: this.props.item.name,
+    time: this.props.item.time,
+    start: this.props.item.start,
+    isOn: this.props.item.isOn,
     isOpenModal: false
   };
 
   componentDidMount() {
-    this.setState({
-      name: this.props.item.name,
-      time: this.props.item.time,
-      start: this.props.item.start,
-      isOn: this.props.item.isOn
-    });
-
     this.timer = setInterval(() => {
       if (!this.state.isOn) return;
       this.setState({
@@ -34,7 +27,16 @@ class TaskItem extends Component {
     }, 1);
   }
 
-
+  componentDidUpdate(previousProps, previousState) {
+    if (previousProps.item !== this.props.item) {
+      this.setState({
+        name: this.props.item.name,
+        time: this.props.item.time,
+        start: this.props.item.start,
+        isOn: this.props.item.isOn,
+      })
+    }
+  }
   componentWillUnmount() {
     clearInterval(this.timer)
   }
@@ -69,7 +71,6 @@ class TaskItem extends Component {
   render() {
     const {time, isOn, isOpenModal, name} = this.state;
     const {id} = this.props;
-
 
     return (
       <ListItem style={{borderBottom: '1px solid #aeaeae'}}>

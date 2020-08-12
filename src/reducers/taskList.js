@@ -7,10 +7,7 @@ const updateTasks = (state, action) => {
   switch (action.type) {
     case 'ADD_TASK':
       return {
-        // tasks: [action.payload, ...state.taskList.tasks] по идее все должно работать правильно, но происходит какая-то магия,
-        // запись добавляется правильно, но корректные данные отображаются только после перезагрузки страницы иначе дублируется
-        // название задания
-        tasks: [...state.taskList.tasks, action.payload, ]
+        tasks: [ action.payload,...state.taskList.tasks, ]
       };
     case 'UPDATE_TASK':
       return {
