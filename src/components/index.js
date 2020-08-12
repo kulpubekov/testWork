@@ -1,13 +1,15 @@
 import React, {} from 'react';
 import CreateTask from "./create-task";
-import TaskItems from "./task-items";
+import TaskList from "./task-list";
+import Container from '@material-ui/core/Container';
 
 const App = () => {
   return (
-    <div>
+    <Container maxWidth="sm">
       <CreateTask/>
-      <TaskItems/>
-    </div>
+      <TaskList/>
+    </Container>
+
   );
 };
 

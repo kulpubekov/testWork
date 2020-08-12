@@ -4,31 +4,27 @@ const updateTasks = (state, action) => {
       tasks: [],
     }
   }
-
   switch (action.type) {
-    case 'FETCH_TASKS':
-      return {
-        ...state.taskList,
-      };
     case 'ADD_TASK':
       return {
-        tasks: [...state.taskList.tasks, action.payload]
+        // tasks: [action.payload, ...state.taskList.tasks] по идее все должно работать правильно, но происходит какая-то магия,
+        // запись добавляется правильно, но корректные данные отображаются только после перезагрузки страницы иначе дублируется
+        // название задания
+        tasks: [...state.taskList.tasks, action.payload, ]
       };
     case 'UPDATE_TASK':
-
       return {
         tasks: [
           ...state.taskList.tasks.slice(0, action.payload),
           action.obj,
-          ...state.taskList.tasks.slice(action.payload + 1)
+          ...state.taskList.tasks.slice(action.payload + 1),
         ]
       };
     case 'DELETE_TASK':
-      console.log(action.payload, 'asdsa');
       return {
         tasks: [
           ...state.taskList.tasks.slice(0, action.payload),
-          ...state.taskList.tasks.slice(action.payload + 1)
+          ...state.taskList.tasks.slice(action.payload + 1),
         ]
       };
 

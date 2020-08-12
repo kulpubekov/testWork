@@ -1,10 +1,3 @@
-export const fetchTasks = (data) => {
-  return {
-    type: 'FETCH_TASKS',
-    payload: data
-  }
-};
-
 export const addTask = (task) => {
   return {
     type: 'ADD_TASK',
