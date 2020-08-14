@@ -1,8 +1,9 @@
 import {createStore} from 'redux';
 import reducer from './reducers';
 
-const persistedState = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : {};
+const persistedState = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
+console.log(persistedState);
 const taskList = {
   tasks: persistedState
 };
